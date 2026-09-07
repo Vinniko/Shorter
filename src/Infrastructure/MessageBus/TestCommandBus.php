@@ -59,13 +59,7 @@ final class TestCommandBus implements CommandBusInterface
      */
     public function assertIsDispatched(string $commandClassName): void
     {
-        foreach ($this->dispatchedCommands as $dispatchedCommand) {
-            if ($dispatchedCommand instanceof $commandClassName) {
-                return;
-            }
-        }
-
-        Assert::fail(sprintf('Command %s was not dispatched', $commandClassName));
+        Assert::assertTrue($this->isDispatched($commandClassName), sprintf('Command %s was not dispatched', $commandClassName));
     }
 
     /**
@@ -73,12 +67,20 @@ final class TestCommandBus implements CommandBusInterface
      */
     public function assertIsNotDispatched(string $commandClassName): void
     {
-        foreach ($this->dispatchedCommands as $dispatchedCommand) {
-            if (!$dispatchedCommand instanceof $commandClassName) {
-                continue;
-            }
+        Assert::assertFalse($this->isDispatched($commandClassName), sprintf('Command %s was dispatched', $commandClassName));
+    }
 
-            Assert::fail(sprintf('Command %s was dispatched', $commandClassName));
+    /**
+     * @param class-string $commandClassName
+     */
+    private function isDispatched(string $commandClassName): bool
+    {
+        foreach ($this->dispatchedCommands as $dispatchedCommand) {
+            if ($dispatchedCommand instanceof $commandClassName) {
+                return true;
+            }
         }
+
+        return false;
     }
 }

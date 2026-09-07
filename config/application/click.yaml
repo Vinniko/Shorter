@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Application\Click\UseCases\Handlers\:
+        resource: '%kernel.project_dir%/src/Application/Click/UseCases/Handlers/'
