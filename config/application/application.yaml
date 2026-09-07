@@ -6,3 +6,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+
+    Application\View\Validator\:
+        resource: '%kernel.project_dir%/src/Application/View/Validator/'

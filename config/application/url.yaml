@@ -6,3 +6,22 @@ services:
 
     Application\Url\UseCases\Handlers\:
         resource: '%kernel.project_dir%/src/Application/Url/UseCases/Handlers/'
+
+    Application\View\Url\UrlViewFactory:
+        arguments:
+            $defaultUri: '%env(DEFAULT_URI)%'
+
+    Application\View\Url\LinkStatsViewFactory: ~
+
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: true
+
+        Application\View\Url\UrlViewFactory:
+            arguments:
+                $defaultUri: '%env(DEFAULT_URI)%'
+
+        Application\View\Url\LinkStatsViewFactory: ~
