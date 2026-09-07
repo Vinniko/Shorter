@@ -5,6 +5,7 @@ namespace Infrastructure\Persistence\Repositories\Url;
 use Doctrine\ORM\EntityManagerInterface;
 use Domain\Url\Entities\Url;
 use Domain\Url\Repositories\UrlRepositoryInterface;
+use Symfony\Component\Uid\Uuid;
 
 final class UrlRepository implements UrlRepositoryInterface
 {
@@ -23,5 +24,10 @@ final class UrlRepository implements UrlRepositoryInterface
         return $this->entityManager
             ->getRepository(Url::class)
             ->findOneBy(['code' => $code]);
+    }
+
+    public function findById(Uuid $id): ?Url
+    {
+        return $this->entityManager->find(Url::class, $id);
     }
 }

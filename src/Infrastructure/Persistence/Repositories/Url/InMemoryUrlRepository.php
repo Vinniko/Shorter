@@ -4,6 +4,7 @@ namespace Infrastructure\Persistence\Repositories\Url;
 
 use Domain\Url\Entities\Url;
 use Domain\Url\Repositories\UrlRepositoryInterface;
+use Symfony\Component\Uid\Uuid;
 
 final class InMemoryUrlRepository implements UrlRepositoryInterface
 {
@@ -26,5 +27,10 @@ final class InMemoryUrlRepository implements UrlRepositoryInterface
         }
 
         return null;
+    }
+
+    public function findById(Uuid $id): ?Url
+    {
+        return $this->urls[$id->toString()] ?? null;
     }
 }
