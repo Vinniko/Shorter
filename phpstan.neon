@@ -1,0 +1,10 @@
+parameters:
+    scanDirectories:
+        - var/cache
+    level: 8
+    tmpDir: ./var/cache/phpstan
+    paths:
+        - src
+        - tests
+    symfony:
+        containerXmlPath: var/cache/dev/Infrastructure_KernelDevDebugContainer.xml
