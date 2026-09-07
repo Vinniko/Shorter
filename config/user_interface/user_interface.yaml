@@ -2,3 +2,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
+
+    UserInterface\Console\:
+        resource: '%kernel.project_dir%/src/UserInterface/Console/'

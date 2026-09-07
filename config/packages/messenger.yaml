@@ -1,5 +1,14 @@
 framework:
     messenger:
+        transports:
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    auto_setup: false
+
+        routing:
+            'Application\Click\UseCases\RecordClickUseCase': async
+
         default_bus: command.bus
         buses:
             command.bus:
@@ -9,3 +18,9 @@ framework:
             query.bus:
                 middleware:
                     - validation
+
+when@test:
+    framework:
+        messenger:
+            transports:
+                async: 'sync://'
