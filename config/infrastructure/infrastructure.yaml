@@ -1,3 +1,6 @@
+imports:
+    - { resource: message_bus.yaml }
+
 services:
     _defaults:
         autowire: true

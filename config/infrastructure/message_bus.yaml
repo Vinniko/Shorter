@@ -1,0 +1,5 @@
+services:
+    messenger.middleware.doctrine_transaction:
+        class: Infrastructure\MessageBus\Middleware\DoctrineTransactionMiddleware
+        arguments:
+            - '@doctrine'

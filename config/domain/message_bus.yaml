@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Domain\MessageBus\CommandBusInterface:
+        class: Infrastructure\MessageBus\CommandBus
+
+    Domain\MessageBus\QueryBusInterface:
+        class: Infrastructure\MessageBus\QueryBus
+
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: false
+
+        Infrastructure\MessageBus\CommandBus: ~
+        Infrastructure\MessageBus\QueryBus: ~
+
+        Domain\MessageBus\CommandBusInterface:
+            class: Infrastructure\MessageBus\TestCommandBus
+            public: true
+            arguments:
+                $commandBus: '@Infrastructure\MessageBus\CommandBus'
+
+        Domain\MessageBus\QueryBusInterface:
+            class: Infrastructure\MessageBus\TestQueryBus
+            public: true
+            arguments:
+                $queryBus: '@Infrastructure\MessageBus\QueryBus'

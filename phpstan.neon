@@ -6,5 +6,7 @@ parameters:
     paths:
         - src
         - tests
+    excludePaths:
+        - tests/bootstrap.php
     symfony:
         containerXmlPath: var/cache/dev/Infrastructure_KernelDevDebugContainer.xml

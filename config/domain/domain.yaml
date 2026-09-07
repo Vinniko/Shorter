@@ -1,4 +1,5 @@
 imports:
+    - { resource: message_bus.yaml }
     - { resource: url.yaml }
     - { resource: click.yaml }
 
