@@ -4,26 +4,22 @@ namespace Tests\Domain\Url\Queries\Handlers;
 
 use Domain\Url\Entities\Url;
 use Domain\Url\Exceptions\UrlNotFoundException;
-use Domain\Url\Queries\GetUrlByCodeQuery;
+use Domain\Url\Queries\GetUrlByIdQuery;
 use Domain\Url\Repositories\UrlRepositoryInterface;
-use Faker\Factory;
-use Faker\Generator;
 use Infrastructure\Persistence\Repositories\Url\InMemoryUrlRepository;
 use Infrastructure\Persistence\Repositories\Url\TestUrlRepository;
 use PHPUnit\Framework\MockObject\Exception;
+use Symfony\Component\Uid\Uuid;
 use Tests\TestCases\FunctionalTestCase;
 
-final class GetUrlByCodeQueryHandlerTest extends FunctionalTestCase
+final class GetUrlByIdQueryHandlerTest extends FunctionalTestCase
 {
     private InMemoryUrlRepository $repository;
-
-    private Generator $faker;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->faker = Factory::create();
         $this->repository = $this->getServiceByClassName(InMemoryUrlRepository::class);
 
         $this->getServiceByInterface(
@@ -46,9 +42,10 @@ final class GetUrlByCodeQueryHandlerTest extends FunctionalTestCase
 
     public function testUrlMustBeFound(): void
     {
-        $url = $this->createUrl('abc1234567');
+        $id = Uuid::v7();
+        $url = $this->createUrl($id);
 
-        $query = new GetUrlByCodeQuery('abc1234567');
+        $query = new GetUrlByIdQuery($id);
 
         $foundUrl = $this->getQueryBus()->dispatch($query);
 
@@ -57,7 +54,7 @@ final class GetUrlByCodeQueryHandlerTest extends FunctionalTestCase
 
     public function testExceptionMustBeThrownWhenUrlIsNotFound(): void
     {
-        $query = new GetUrlByCodeQuery($this->faker->lexify('??????????'));
+        $query = new GetUrlByIdQuery(Uuid::v7());
 
         $this->expectException(UrlNotFoundException::class);
 
@@ -67,10 +64,10 @@ final class GetUrlByCodeQueryHandlerTest extends FunctionalTestCase
     /**
      * @throws Exception
      */
-    private function createUrl(string $code): Url
+    private function createUrl(Uuid $id): Url
     {
         $url = self::createStub(Url::class);
-        $url->method('getCode')->willReturn($code);
+        $url->method('getId')->willReturn($id);
 
         $this->repository->save($url);
 
