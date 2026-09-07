@@ -10,6 +10,9 @@ services:
     Domain\Utils\ShortCode\ShortCodeGeneratorInterface:
         class: Infrastructure\Utils\ShortCode\RandomShortCodeGenerator
 
+    Domain\Url\TransferObjects\Factories\:
+        resource: '%kernel.project_dir%/src/Domain/Url/TransferObjects/Factories/'
+
     Domain\Url\Commands\Handlers\:
         resource: '%kernel.project_dir%/src/Domain/Url/Commands/Handlers/'
 
