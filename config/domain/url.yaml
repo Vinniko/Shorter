@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+
+    Domain\Url\Repositories\UrlRepositoryInterface:
+        class: Infrastructure\Persistence\Repositories\Url\UrlRepository
+
+when@test:
+    services:
+        _defaults:
+            autoconfigure: true
+            autowire: true
+            public: true
+
+        Infrastructure\Persistence\Repositories\Url\UrlRepository: ~
+        Infrastructure\Persistence\Repositories\Url\InMemoryUrlRepository: ~
+
+        Domain\Url\Repositories\UrlRepositoryInterface:
+            class: Infrastructure\Persistence\Repositories\Url\TestUrlRepository
+            arguments:
+                $urlRepository: '@Infrastructure\Persistence\Repositories\Url\UrlRepository'
+                $inMemoryUrlRepository: '@Infrastructure\Persistence\Repositories\Url\InMemoryUrlRepository'

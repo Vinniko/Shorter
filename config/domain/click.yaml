@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+
+    Domain\Click\Repositories\ClickRepositoryInterface:
+        class: Infrastructure\Persistence\Repositories\Click\ClickRepository
+
+when@test:
+    services:
+        _defaults:
+            autoconfigure: true
+            autowire: true
+            public: true
+
+        Infrastructure\Persistence\Repositories\Click\ClickRepository: ~
+        Infrastructure\Persistence\Repositories\Click\InMemoryClickRepository: ~
+
+        Domain\Click\Repositories\ClickRepositoryInterface:
+            class: Infrastructure\Persistence\Repositories\Click\TestClickRepository
+            arguments:
+                $clickRepository: '@Infrastructure\Persistence\Repositories\Click\ClickRepository'
+                $inMemoryClickRepository: '@Infrastructure\Persistence\Repositories\Click\InMemoryClickRepository'
