@@ -7,6 +7,9 @@ services:
     Application\Url\UseCases\Handlers\:
         resource: '%kernel.project_dir%/src/Application/Url/UseCases/Handlers/'
 
+    Application\Url\EventListener\:
+        resource: '%kernel.project_dir%/src/Application/Url/EventListener/'
+
     Application\View\Url\UrlViewFactory:
         arguments:
             $publicUri: '%env(DEFAULT_URI)%'
