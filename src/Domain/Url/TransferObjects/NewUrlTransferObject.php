@@ -4,7 +4,7 @@ namespace Domain\Url\TransferObjects;
 
 use Symfony\Component\Uid\Uuid;
 
-final class UrlTransferObject
+final class NewUrlTransferObject
 {
     public function __construct(
         public Uuid $id,

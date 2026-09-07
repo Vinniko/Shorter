@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Domain\EntityDetails\HasTimestampsDetailsInterface;
 use Domain\EntityDetails\TimestampsDetailsTrait;
-use Domain\Url\TransferObjects\UrlTransferObject;
+use Domain\Url\TransferObjects\NewUrlTransferObject;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
@@ -42,7 +42,7 @@ class Url implements HasTimestampsDetailsInterface
         return $this->target_url;
     }
 
-    public static function createByTransferObject(UrlTransferObject $transferObject): self
+    public static function createByTransferObject(NewUrlTransferObject $transferObject): self
     {
         $createdAt = new DateTimeImmutable();
 

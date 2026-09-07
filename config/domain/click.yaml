@@ -7,6 +7,12 @@ services:
     Domain\Click\Repositories\ClickRepositoryInterface:
         class: Infrastructure\Persistence\Repositories\Click\ClickRepository
 
+    Domain\Click\Commands\Handlers\:
+        resource: '%kernel.project_dir%/src/Domain/Click/Commands/Handlers/'
+
+    Domain\Click\Queries\Handlers\:
+        resource: '%kernel.project_dir%/src/Domain/Click/Queries/Handlers/'
+
 when@test:
     services:
         _defaults:

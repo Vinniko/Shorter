@@ -7,6 +7,12 @@ services:
     Domain\Url\Repositories\UrlRepositoryInterface:
         class: Infrastructure\Persistence\Repositories\Url\UrlRepository
 
+    Domain\Url\Commands\Handlers\:
+        resource: '%kernel.project_dir%/src/Domain/Url/Commands/Handlers/'
+
+    Domain\Url\Queries\Handlers\:
+        resource: '%kernel.project_dir%/src/Domain/Url/Queries/Handlers/'
+
 when@test:
     services:
         _defaults:

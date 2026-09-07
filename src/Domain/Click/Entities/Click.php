@@ -5,7 +5,7 @@ namespace Domain\Click\Entities;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Domain\Click\TransferObjects\ClickTransferObject;
+use Domain\Click\TransferObjects\NewClickTransferObject;
 use Domain\Url\Entities\Url;
 use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
@@ -22,7 +22,7 @@ class Click
     #[ORM\JoinColumn(name: 'url_id', referencedColumnName: 'id', nullable: false)]
     private Url $url;
 
-    #[ORM\Column(name: 'clicked_at', type: 'datetime')]
+    #[ORM\Column(name: 'clicked_at', type: 'datetime_immutable')]
     private DateTimeInterface $clickedAt;
 
     public function getId(): SymfonyUuid
@@ -40,7 +40,7 @@ class Click
         return $this->clickedAt;
     }
 
-    public static function createByTransferObject(ClickTransferObject $transferObject): self
+    public static function createByTransferObject(NewClickTransferObject $transferObject): self
     {
         $click = new self();
         $click->id = SymfonyUuid::fromString($transferObject->id->toString());

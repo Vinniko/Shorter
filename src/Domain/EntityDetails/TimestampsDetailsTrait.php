@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait TimestampsDetailsTrait
 {
-    #[ORM\Column(name: 'created_at', type: 'datetime')]
+    #[ORM\Column(name: 'created_at', type: 'datetime_immutable')]
     private DateTimeInterface $createdAt;
 
-    #[ORM\Column(name: 'updated_at', type: 'datetime')]
+    #[ORM\Column(name: 'updated_at', type: 'datetime_immutable')]
     private DateTimeInterface $updatedAt;
 
     public function getCreatedAt(): DateTimeInterface
