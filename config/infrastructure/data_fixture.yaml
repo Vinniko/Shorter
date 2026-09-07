@@ -1,0 +1,18 @@
+when@test:
+    services:
+        _defaults:
+            autowire: true
+            autoconfigure: true
+            public: true
+
+        Tests\DataFixtures\ORM\:
+            resource: '%kernel.project_dir%/tests/DataFixtures/ORM'
+            tags: ['doctrine.fixture.orm']
+            public: true
+            autowire: true
+
+        Tests\Builders\:
+            resource: '%kernel.project_dir%/tests/Builders'
+            exclude: '%kernel.project_dir%/tests/Builders/ORM/{Assertion,Exception}'
+            public: true
+            autowire: true

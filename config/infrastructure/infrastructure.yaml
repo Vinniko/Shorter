@@ -1,5 +1,6 @@
 imports:
     - { resource: message_bus.yaml }
+    - { resource: data_fixture.yaml }
 
 services:
     _defaults:
