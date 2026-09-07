@@ -8,11 +8,15 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-bundle": "^2.19",
+        "doctrine/doctrine-migrations-bundle": "^3.7",
+        "doctrine/orm": "^3.6",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.2.*",
         "symfony/runtime": "7.2.*",
+        "symfony/uid": "7.2.*",
         "symfony/yaml": "7.2.*"
     },
     "require-dev": {
@@ -21,7 +25,8 @@
         "phpstan/extension-installer": "*",
         "phpstan/phpstan": "*",
         "phpstan/phpstan-symfony": "*",
-        "qossmic/deptrac-shim": "*"
+        "qossmic/deptrac-shim": "*",
+        "symfony/maker-bundle": "^1.67"
     },
     "config": {
         "allow-plugins": {
