@@ -7,6 +7,9 @@ services:
     Domain\Url\Repositories\UrlRepositoryInterface:
         class: Infrastructure\Persistence\Repositories\Url\UrlRepository
 
+    Domain\Utils\ShortCode\ShortCodeGeneratorInterface:
+        class: Infrastructure\Utils\ShortCode\RandomShortCodeGenerator
+
     Domain\Url\Commands\Handlers\:
         resource: '%kernel.project_dir%/src/Domain/Url/Commands/Handlers/'
 
