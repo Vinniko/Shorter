@@ -9,7 +9,7 @@ services:
 
     Application\View\Url\UrlViewFactory:
         arguments:
-            $defaultUri: '%env(DEFAULT_URI)%'
+            $publicUri: '%env(DEFAULT_URI)%'
 
     Application\View\Url\LinkStatsViewFactory: ~
 
@@ -22,6 +22,6 @@ when@test:
 
         Application\View\Url\UrlViewFactory:
             arguments:
-                $defaultUri: '%env(DEFAULT_URI)%'
+                $publicUri: '%env(DEFAULT_URI)%'
 
         Application\View\Url\LinkStatsViewFactory: ~

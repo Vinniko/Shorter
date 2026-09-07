@@ -9,6 +9,10 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    env(PUBLIC_DOMAIN): 'shorter.localhost'
+    env(API_DOMAIN): 'api.shorter.localhost'
+    public_domain: '%env(PUBLIC_DOMAIN)%'
+    api_domain: '%env(API_DOMAIN)%'
 
 services:
     # default configuration for services in *this* file

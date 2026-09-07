@@ -1,3 +1,9 @@
-controllers:
-    resource: ../src/UserInterface/Http
+api:
+    host: '%api_domain%'
+    resource: ../src/UserInterface/Http/Api
+    type: attribute
+
+public:
+    host: '%public_domain%'
+    resource: ../src/UserInterface/Http/Public
     type: attribute
