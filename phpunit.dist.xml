@@ -18,8 +18,17 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Domain">
+            <directory>./tests/Domain</directory>
+        </testsuite>
+        <testsuite name="Application">
+            <directory>./tests/Application</directory>
+        </testsuite>
+        <testsuite name="Infrastructure">
+            <directory>./tests/Infrastructure</directory>
+        </testsuite>
+        <testsuite name="UserInterface">
+            <directory>./tests/UserInterface</directory>
         </testsuite>
     </testsuites>
 
