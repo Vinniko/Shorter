@@ -1,0 +1,48 @@
+.link_stats_display {
+  width: 100%;
+  margin-top: 24px;
+  padding: 24px 20px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  text-align: center;
+
+  .link {
+    color: #4f46e5;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .target_url {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.click_counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.click_count {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: #4f46e5;
+}
+
+.click_label {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}

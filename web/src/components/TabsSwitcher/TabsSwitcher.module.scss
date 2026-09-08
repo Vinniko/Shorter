@@ -1,0 +1,27 @@
+.tabs_switcher {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tabs {
+  max-width: 420px;
+  width: 100%;
+  margin: 40px auto 0;
+  padding: 4px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.panel_item {
+  width: 100%;
+  max-width: 420px;
+}
