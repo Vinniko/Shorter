@@ -71,6 +71,14 @@ jobs:
       - name: Install composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
+      - name: Create test database
+        run: |
+          mysql --host=127.0.0.1 --user=root --password=root -e "
+            CREATE DATABASE IF NOT EXISTS \`shorter_test\`;
+            GRANT ALL PRIVILEGES ON \`shorter_test\`.* TO 'shorter'@'%';
+            FLUSH PRIVILEGES;
+          "
+
       - name: Run database migrations
         run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
 
