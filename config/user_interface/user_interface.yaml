@@ -3,8 +3,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    UserInterface\Console\:
-        resource: '%kernel.project_dir%/src/UserInterface/Console/'
-
     UserInterface\Http\:
         resource: '%kernel.project_dir%/src/UserInterface/Http/'
