@@ -1,0 +1,39 @@
+name: Frontend Continuous Integration
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - web/**
+
+jobs:
+  frontend:
+    name: Lint & Build (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: ['20']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+          cache-dependency-path: web/yarn.lock
+
+      - name: Install dependencies
+        working-directory: web
+        run: yarn install --frozen-lockfile
+
+      - name: Run linters
+        working-directory: web
+        run: yarn lint
+
+      - name: Type-check and build
+        working-directory: web
+        run: yarn build
