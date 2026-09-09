@@ -45,8 +45,8 @@ docker compose exec php composer install
 docker compose exec php php bin/console doctrine:migrations:migrate --no-interaction
 ```
 
-Затем открой **http://shorter.localhost/** (фронтенд) и **http://api.shorter.localhost/api/doc**
-(документация API). Полные детали, включая переменные окружения и troubleshooting — в
+Затем можно открыть **http://shorter.localhost/** (фронтенд) и **http://api.shorter.localhost/api/doc**
+(документацию API). Полные детали, включая переменные окружения и troubleshooting — в
 [docs/install.md](docs/install.md).
 
 ## Лицензия
