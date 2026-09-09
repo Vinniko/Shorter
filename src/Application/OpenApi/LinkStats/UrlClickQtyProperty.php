@@ -16,7 +16,7 @@ final class UrlClickQtyProperty extends Property
             description: 'Total number of times the short link was visited.',
             type: 'integer',
             readOnly: $readOnly,
-            example: 42,
+            example: 43,
         );
     }
 }

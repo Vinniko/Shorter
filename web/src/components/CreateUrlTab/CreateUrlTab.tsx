@@ -30,7 +30,7 @@ function CreateUrlTab() {
       </Typography>
       <TextInput
         label="Long URL"
-        placeholder="https://example.com/some/very/long/path"
+        placeholder="https://example.com/some/very/long/path1"
         value={targetUrl}
         onChange={setTargetUrl}
         error={Boolean(validationError?.violations.targetUrl)}
